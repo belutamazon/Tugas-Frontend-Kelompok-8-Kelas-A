@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz IoT dengan Timer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      text-align: center;
+      padding: 20px;
+    }
+    .quiz-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 500px;
+      margin: auto;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    .question {
+      margin: 15px 0;
+      font-weight: bold;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+      text-align: left;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: green;
+    }
+    #timer {
+      font-size: 20px;
+      font-weight: bold;
+      color: red;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Quiz IoT ⚡</h1>
+    <div id="timer">Waktu: 30</div>
+    <form id="quizForm">
+      
+      <div class="question">
+        1. IoT singkatan dari...?  
+        <label><input type="radio" name="q1" value="0"> Internet of Technology</label>
+        <label><input type="radio" name="q1" value="1"> Internet of Things</label>
+        <label><input type="radio" name="q1" value="0"> Integrated of Tools</label>
+      </div>
+      
+      <div class="question">
+        2. Perangkat berikut termasuk contoh IoT adalah...?  
+        <label><input type="radio" name="q2" value="0"> Printer biasa</label>
+        <label><input type="radio" name="q2" value="1"> Smart Home Lamp</label>
+        <label><input type="radio" name="q2" value="0"> Mesin ketik</label>
+      </div>
+      
+      <div class="question">
+        3. Protokol yang umum digunakan dalam IoT adalah...?  
+        <label><input type="radio" name="q3" value="0"> HTTP</label>
+        <label><input type="radio" name="q3" value="1"> MQTT</label>
+        <label><input type="radio" name="q3" value="0"> FTP</label>
+      </div>
+      
+      <button type="button" onclick="checkAnswers()">Submit</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    let timeLeft = 30;
+    let timerId = setInterval(updateTimer, 1000);
+
+    function updateTimer() {
+      document.getElementById("timer").textContent = "Waktu: " + timeLeft;
+      timeLeft--;
+
+      if (timeLeft < 0) {
+        clearInterval(timerId);
+        checkAnswers(true); // otomatis submit kalau habis waktu
+      }
+    }
+
+    function checkAnswers(autoSubmit = false) {
+      clearInterval(timerId); // stop timer
+      let form = document.getElementById("quizForm");
+      let score = 0;
+      let totalQuestions = 3;
+
+      for (let i = 1; i <= totalQuestions; i++) {
+        let answer = form["q" + i].value;
+        score += parseInt(answer || 0);
+      }
+
+      if (autoSubmit) {
+        document.getElementById("result").innerHTML =
+          "⏰ Waktu habis! Skor kamu: " + score + " / " + totalQuestions;
+      } else {
+        document.getElementById("result").innerHTML =
+          "✅ Skor kamu: " + score + " / " + totalQuestions;
+      }
+    }
+  </script>
+</body>
+</html>
