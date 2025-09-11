@@ -1,4 +1,4 @@
-body {
+/* body {
   font-family: Arial, sans-serif;
   background: #f4f4f9;
   text-align: center;
@@ -48,4 +48,101 @@ button:hover {
   font-weight: bold;
   color: red;
   margin-bottom: 15px;
+} */
+/* ===== Global Layout ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #4b0055;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
+
+/* ===== Logo ===== */
+.logo {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* ===== Quiz Container ===== */
+.quiz-container {
+  background: #2d033b;
+  padding: 30px;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 1000px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* ===== Pertanyaan ===== */
+.question {
+  font-size: 28px;
+  margin: 30px 0;
+}
+
+/* ===== Jawaban Grid 2x2 ===== */
+.answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.answer {
+  padding: 40px;
+  border: none;
+  border-radius: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.answer:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Warna Balok Jawaban ===== */
+.a { background: #c9a700; } /* kuning emas */
+.b { background: #e85d04; } /* oranye */
+.c { background: #38b000; } /* hijau */
+.d { background: #4361ee; } /* biru */
+
+/* ===== Timer Bar Penuh ===== */
+#timer-container {
+  width: 100%;
+  height: 25px;
+  background: #555;
+  border-radius: 10px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+
+#timer-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, #28a745, #dc3545);
+  border-radius: 10px;
+  transition: width 1s linear;
+}
+
+#timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+}
+
+
+
+
