@@ -50,99 +50,170 @@ button:hover {
   margin-bottom: 15px;
 } */
 /* ===== Global Layout ===== */
+/* ===== Global Layout ===== */
+/* ===== Global Layout ===== */
+/* ===== Global Layout ===== */
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #4b0055;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #1a2a3a; /* Biru tua gelap */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 /* ===== Logo ===== */
 .logo {
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
 /* ===== Quiz Container ===== */
 .quiz-container {
-  background: #2d033b;
-  padding: 30px;
-  border-radius: 20px;
-  width: 80%;
-  max-width: 1000px;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    background: #2b3e50; /* Abu-abu gelap */
+    padding: 30px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 1000px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
 /* ===== Pertanyaan ===== */
 .question {
-  font-size: 28px;
-  margin: 30px 0;
+    font-size: 28px;
+    margin: 30px 0;
 }
 
 /* ===== Jawaban Grid 2x2 ===== */
 .answers {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
 }
 
 .answer {
-  padding: 40px;
-  border: none;
-  border-radius: 15px;
-  font-size: 22px;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  transition: transform 0.2s;
+    padding: 40px;
+    border: none;
+    border-radius: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 .answer:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
-/* ===== Warna Balok Jawaban ===== */
-.a { background: #c9a700; } /* kuning emas */
-.b { background: #e85d04; } /* oranye */
-.c { background: #38b000; } /* hijau */
-.d { background: #4361ee; } /* biru */
+/* ===== Warna Balok Jawaban Default ===== */
+/* Perhatikan: class .a, .b, .c, .d ini adalah warna default sebelum diklik */
+.a { background: #3b82f6; } /* Biru */
+.b { background: #f97316; } /* Oranye */
+.c { background: #3510b9; } /* Hijau daun */
+.d { background: #dd26ce; } /* Merah terang */
+
+
+/* ===== Warna Jawaban SAAT DIKLIK dan TAMPIL BENAR/SALAH ===== */
+/* Ini adalah bagian yang akan meng-override warna default ketika tombol jawaban diklik */
+/* Warna untuk jawaban yang benar (setelah diklik) */
+.answer[style*="background: rgb(40, 167, 69)"] { /* Ini adalah warna 'green' dari JS sebelumnya */
+    background: #12B886 !important; /* Hijau yang lebih gelap dan solid */
+}
+/* Warna untuk jawaban yang salah (setelah diklik) */
+.answer[style*="background: rgb(220, 53, 69)"] { /* Ini adalah warna 'red' dari JS sebelumnya */
+    background: #DC2626 !important; /* Merah yang lebih gelap */
+}
+
 
 /* ===== Timer Bar Penuh ===== */
 #timer-container {
-  width: 100%;
-  height: 25px;
-  background: #555;
-  border-radius: 10px;
-  margin: 0 auto 20px;
-  position: relative;
+    width: 100%;
+    height: 25px;
+    background: #555;
+    border-radius: 10px;
+    margin: 0 auto 20px;
+    position: relative;
 }
 
 #timer-bar {
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(to right, #28a745, #dc3545);
-  border-radius: 10px;
-  transition: width 1s linear;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, #10b981, #ef4444);
+    border-radius: 10px;
+    transition: width 1s linear;
 }
 
 #timer-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 16px;
-  color: #fff;
-  font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
 }
 
+/* ===== Styling Tombol Potion ===== */
+#potion-btn {
+    background-color: #f7a233; /* Warna oranye/emas */
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: none;
+    transition: background-color 0.3s;
+}
 
+#potion-btn:hover {
+    background-color: #e0942d;
+}
 
+#potion-btn:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
 
+/* Gambar di dalam tombol potion */
+.potion-image {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+/* Styling Notifikasi */
+#notification {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: none;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#notification.info {
+    background-color: #3b82f6; /* Biru */
+}
+
+#notification.success {
+    background-color: #12B886; /* Hijau yang lebih gelap untuk notifikasi sukses */
+}
