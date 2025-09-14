@@ -131,6 +131,23 @@ body {
     background: #DC2626 !important; /* Merah yang lebih gelap */
 }
 
+#restart-btn {
+    margin-top: 15px;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #3b82f6; /* Biru */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+
+#restart-btn:hover {
+    background-color: #2563eb; 
+}
 
 /* ===== Timer Bar Penuh ===== */
 #timer-container {

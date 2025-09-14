@@ -1,33 +1,3 @@
-// let timeLeft = 30;
-// let timer = setInterval(function() {
-//   if (timeLeft <= 0) {
-//     clearInterval(timer);
-//     document.getElementById("timer").innerHTML = "Waktu habis!";
-//     checkAnswers();
-//   } else {
-//     document.getElementById("timer").innerHTML = "Waktu: " + timeLeft;
-//   }
-//   timeLeft -= 1;
-// }, 1000);
-
-// function checkAnswers() {
-//   let score = 0;
-//   const form = document.forms["quizForm"];
-
-//   if (form["q1"].value === "1") score++;
-//   if (form["q2"].value === "1") score++;
-//   if (form["q3"].value === "1") score++;
-
-//   document.getElementById("result").innerHTML = 
-//     "Skor Anda: " + score + "/3";
-
-//   // disable form setelah submit
-//   const inputs = form.querySelectorAll("input, button");
-//   inputs.forEach(el => el.disabled = true);
-// }
-// Daftar pertanyaan
-// Daftar pertanyaan
-// Daftar pertanyaan
 const questions = [
     {
         text: "Apa singkatan dari HTML?",
@@ -352,10 +322,30 @@ function nextQuestion() {
 function finishQuiz() {
     clearInterval(countdown);
     questionEl.textContent = "Quiz selesai 🎉";
-    answersEl.innerHTML = `<h2>Skor Anda: ${score}/${shuffledQuestions.length}</h2>`;
+    answersEl.innerHTML = `
+         <button id="restart-btn">Main Lagi 🔄</button>
+        <p class="score-text">Skor Anda: ${score}/${shuffledQuestions.length}</p>
+    `;
     timerContainer.style.display = "none";
     potionBtn.style.display = "none";
     notificationEl.style.display = 'none';
+
+   const restartBtn = document.getElementById("restart-btn");
+   restartBtn.addEventListener("click", restartQuiz);
+}
+
+function restartQuiz(){
+    currentQuestion = 0;
+    score = 0;
+    hasPotion = false;
+    correctStreak = 0;
+
+    shuffledQuestions.sort(() => Math.random() - 0.5);
+
+    potionBtn.disabled = true;
+    potionBtn.style.display = 'none';
+
+    showQuestion();
 }
 
 showQuestion();
